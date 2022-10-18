@@ -35,7 +35,7 @@ ue:
     nea0: true
     nea1: false
     nea2: false
-  test: ""
+  test: "test-5g-guti"
 amfif:
   ip: "172.22.0.10"
   port: 38412
