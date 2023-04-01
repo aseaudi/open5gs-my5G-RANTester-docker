@@ -1,0 +1,37 @@
+Tutorial open5GS
+Lucas Baleeiro Dominato
+Abdelmuhaimen Seaudi <aseaudi@gmail.com>
+
+This documentation and the code is based on project developed by Supreeth Herle with some modifications. The link of the project is presented below:
+https://github.com/herlesupreeth/docker_open5gs
+
+Docker engine
+To install docker on your favorite OS, you can follow instruction here: https://docs.docker.com/engine/install
+
+Docker compose
+You also need to install docker compose as detailed here: https://docs.docker.com/compose/install/
+
+1- First builds the image of open5gs:
+git clone https://github.com/my5G/docker_open5gs
+cd docker_open5gs/base
+docker build --no-cache --force-rm -t docker_open5gs .
+2- Set your configurations in .env:
+DOCKER_HOST_IP=This is the IP address of the your host running the docker
+3- To execute the open5gs in docker, use the docker-compose and command below:
+docker_open5gs$ set -a
+docker_open5gs$ source .env
+docker_open5gs$ docker-compose build --no-cache
+docker_open5gs$ docker-compose up -d
+4- Check if all containers are healthy using the command below:
+docker ps -a
+5- Register a UE information in http://<host_IP>:3000 (WEB UI) using the parameters set in tester.yaml. Credentials for acessing WEB UI is shown below:
+Username : admin
+Password : 1423
+6- Building the my5G-RANTester image:
+git clone https://github.com/aseaudi/open5gs-my5G-RANTester-docker.git
+cd open5gs-my5G-RANTester-docker
+docker build -f nf_tester/Dockerfile --tag my5grantester:latest .
+7- Change the configuration in tester.yaml file to select the given test. For more information about the tests available here
+8- Start Wireshark to capture any traffic with ngap || sctp || nas and visualize procedures for registration of UE
+9- Execute the my5G-RANTester with robustness and conformance tests in the same directory of the item 6 (to connect with open5gs):
+open5gs-my5G-RANTester-docker$ docker-compose up -d
