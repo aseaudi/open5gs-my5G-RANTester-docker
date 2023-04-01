@@ -2,7 +2,8 @@ FROM golang:1.14.4-stretch
 
 WORKDIR /workspace
 
-RUN git clone --branch validations_v1.0.0 https://github.com/my5G/my5G-RANTester.git \
+RUN git clone https://github.com/my5G/my5G-RANTester.git \
+    && git checkout f652b3d1a740bfdac8fa83e1132555efd6797ba7 \
     && cd my5G-RANTester  \
     && go mod download 
     
