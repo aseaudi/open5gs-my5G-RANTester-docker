@@ -4,7 +4,7 @@ services:
     image: my5grantester:latest
     container_name: my5grantester
     privileged: true
-    command: ./app load-test -n 10
+    command: ./app load-test -n 1000
     volumes:
       - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
     cap_add:
@@ -18,6 +18,9 @@ services:
       timeout: 5s
       retries: 5
 networks:
-    default:
-        external:
-            name: docker_open5gs_home_default
+  default:
+    ipam:
+      config:
+        - subnet: 172.22.0.0/24
+#        external:
+#            name: docker_open5gs_home_default

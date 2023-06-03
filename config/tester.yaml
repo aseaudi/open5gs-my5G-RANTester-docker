@@ -6,9 +6,9 @@ gnodeb:
     ip: "172.22.0.23"
     port: 2152
   plmnlist:
-    mcc: "001"
-    mnc: "01"
-    tac: "000001"
+    mcc: "208"
+    mnc: "93"
+    tac: "000007"
     gnbid: "000003"
   slicesupportlist:
     sst: "01"
@@ -16,14 +16,14 @@ gnodeb:
   test: "test-normal-registration"
 ue:
   msin: "0000000001"
-  key: "0C0A34601D4F07677303652C0462535B"
-  opc: "63bfa50ee6523365ff14c1f45f88737d"
+  key: "465B5CE8B199B49FAA5F0A2EE238A6BC"
+  opc: "E8ED289DEBA952E4283B54E88E6183CA"
   amf: "8000"
   sqn: "0000000"
-  dnn: "default"
+  dnn: "internet"
   hplmn:
-    mcc: "001"
-    mnc: "01"
+    mcc: "208"
+    mnc: "93"
   snssai:
     sst: 1
     sd: "000001"
@@ -37,5 +37,5 @@ ue:
     nea2: false
   test: "test-5g-guti"
 amfif:
-  ip: "172.22.0.110"
-  port: 38412
+  ip: "172.31.93.235"
+  port: 30412
