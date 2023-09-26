@@ -1,0 +1,140 @@
+version: '3.8'
+x-env: &env
+  image: my5g:msin-offset5
+
+services:
+  my5grantester1:
+    <<: *env
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 0
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  my5grantester2:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 1000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester3:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 2000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester4:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 3000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester5:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 4000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester6:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 5000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester7:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 6000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester8:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 7000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  my5grantester9:
+    image: my5g:msin-offset4
+#    container_name: my5grantester
+    privileged: true
+    command: ./app load-test -n 10 -g 100 -o 8000
+    volumes:
+      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+    cap_add:
+      - NET_ADMIN
+    healthcheck:
+      test: /bin/bash -c "ip addr | grep uetun1"
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+
