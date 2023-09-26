@@ -1,26 +1,45 @@
 version: '3.8'
+x-env: &env
+  image: my5g:msin-offset
+  restart: on-failure
+  privileged: true
+  volumes:
+    - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+  cap_add:
+    - NET_ADMIN
+  healthcheck:
+    test: /bin/bash -c "ip addr | grep uetun1"
+    interval: 10s
+    timeout: 5s
+    retries: 5
 services:
-  my5grantester:
-    image: my5grantester:latest
-    container_name: my5grantester
-    privileged: true
-    command: ./app load-test -n 1000
-    volumes:
-      - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
-    cap_add:
-      - NET_ADMIN
-    networks:
-      default:
-          ipv4_address: 172.22.0.23
-    healthcheck:
-      test: /bin/bash -c "ip addr | grep uetun1"
-      interval: 10s
-      timeout: 5s
-      retries: 5
-networks:
-  default:
-    ipam:
-      config:
-        - subnet: 172.22.0.0/24
-#        external:
-#            name: docker_open5gs_home_default
+  my5grantester1:
+    <<: *env
+    command: ./app load-test -n $NUM_UE -g $NUM_GNB -o 0
+  my5grantester2:
+    <<: *env
+    command: sleep 3600 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 1000
+  my5grantester3:
+    <<: *env
+    command: sleep 7200 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 2000
+  my5grantester4:
+    <<: *env
+    command: sleep 10800 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 3000
+  my5grantester5:
+    <<: *env
+    command: sleep 14400 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 4000
+  my5grantester6:
+    <<: *env
+    command: sleep 18000 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 5000
+  my5grantester7:
+    <<: *env
+    command: sleep 21600 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 6000
+  my5grantester8:
+    <<: *env
+    command: sleep 25200 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 7000
+  my5grantester9:
+    <<: *env
+    command: sleep 28800 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 8000
+  my5grantester10:
+    <<: *env
+    command: sleep 32400 && ./app load-test -n $NUM_UE -g $NUM_GNB -o 9000

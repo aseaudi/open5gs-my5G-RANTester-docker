@@ -1,9 +1,9 @@
 gnodeb:
   controlif:
-    ip: "172.22.0.23"
+    ip: "0.0.0.0"
     port: 9487
   dataif:
-    ip: "172.22.0.23"
+    ip: "0.0.0.0"
     port: 2152
   plmnlist:
     mcc: "208"

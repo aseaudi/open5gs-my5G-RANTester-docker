@@ -1,0 +1,45 @@
+version: '3.8'
+x-env: &env
+  image: my5g:msin-offset
+  restart: on-failure
+  privileged: true
+  volumes:
+    - ./config/tester.yaml:/workspace/my5G-RANTester/config/config.yml
+  cap_add:
+    - NET_ADMIN
+  healthcheck:
+    test: /bin/bash -c "ip addr | grep uetun1"
+    interval: 10s
+    timeout: 5s
+    retries: 5
+services:
+  my5grantester1:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 0
+  my5grantester2:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 1000
+  my5grantester3:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 2000
+  my5grantester4:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 3000
+  my5grantester5:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 4000
+  my5grantester6:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 5000
+  my5grantester7:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 6000
+  my5grantester8:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 7000
+  my5grantester9:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 8000
+  my5grantester10:
+    <<: *env
+    command: ./app load-test -n 50 -g 100 -o 9000
